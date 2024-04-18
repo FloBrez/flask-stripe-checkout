@@ -1,4 +1,4 @@
-# Setting up Stripe Checkout with Flask
+. # Setting up Stripe Checkout with Flask
 
 ## Want to learn how to build this?
 

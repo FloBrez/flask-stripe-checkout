@@ -50,14 +50,10 @@ def create_checkout_session():
             cancel_url=domain_url + "cancelled",
             payment_method_types=["card"],
             mode="payment",
-            line_items=[
-                {
-                    "name": "T-shirt",
-                    "quantity": 1,
-                    "currency": "usd",
-                    "amount": "2000",
-                }
-            ]
+            line_items=[{
+                'price': 'price_1P6vWHIr3Svyia9LEMJn7ppu',
+                'quantity': 1,
+            }]
         )
         return jsonify({"sessionId": checkout_session["id"]})
     except Exception as e:
@@ -67,6 +63,7 @@ def create_checkout_session():
 @app.route("/webhook", methods=['POST'])
 def stripe_webhook():
     payload = request.get_data(as_text=True)
+    print(payload)
     sig_header = request.headers.get('Stripe-Signature')
 
     try:
